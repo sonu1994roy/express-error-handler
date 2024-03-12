@@ -1,0 +1,29 @@
+{
+  "name": "express-error-handler",
+  "version": "1.0.0",
+  "description": "handle the error without tryCatch",
+  "main": "dist/index.js",
+  "type": "module",
+  "scripts": {
+    "build": "npx rollup -c",
+    "start": "node dist/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "npm",
+    "package",
+    "typescript",
+    "express"
+  ],
+  "author": "Sonu",
+  "license": "MIT",
+  "devDependencies": {
+    "@rollup/plugin-babel": "^6.0.4",
+    "@rollup/plugin-typescript": "^11.1.6",
+    "@types/express": "^4.17.21",
+    "@types/node": "^20.11.26",
+    "rollup": "^4.13.0",
+    "tslib": "^2.6.2",
+    "typescript": "^5.4.2"
+  }
+}
