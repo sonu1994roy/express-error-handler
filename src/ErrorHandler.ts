@@ -8,6 +8,6 @@ class ErrorHandler extends Error {
     }
 }
 const newError = (message: string, statusCode: number) => {
-    new ErrorHandler(message, statusCode);
+    return new ErrorHandler(message, statusCode);
 };
 export { newError};
