@@ -100,9 +100,9 @@ When using this package, the response structure follows a predefined format to e
 # example
 ```js
 {
-    "success": true,
-    "message": "Resource created successfully.",
-    "statusCode": 201
+    "success": false,
+    "message": "your message.",
+    "statusCode": 404
 }
 ```
 
