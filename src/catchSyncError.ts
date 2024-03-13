@@ -4,4 +4,4 @@ import { Request, Response, NextFunction } from "express";
     Promise.resolve(propsFunc(req,res,next)).catch(next)
 };
 
-export default catchSyncError
+export {catchSyncError};

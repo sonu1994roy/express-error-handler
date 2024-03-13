@@ -1,4 +1,4 @@
-import ErrorHandler from "./ErrorHandler";
+import {ErrorHandler} from "./ErrorHandler";
 import { Request, Response, NextFunction } from "express";
 
  const errorMiddleware = (err: any, req: Request, res: Response, next: NextFunction) => {
@@ -36,4 +36,5 @@ import { Request, Response, NextFunction } from "express";
     });
 };
 
-export default errorMiddleware
+export { errorMiddleware };
+

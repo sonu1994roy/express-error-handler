@@ -1,9 +1,12 @@
 {
   "compilerOptions": {
     "target": "ES2018",
-    "module": "esnext", // Change this line
+    "module": "NodeNext", 
     "outDir": "./dist",
     "strict": true,
+    "declaration": true,
+    "declarationDir": "dist",
+    "moduleResolution": "NodeNext", 
     "esModuleInterop": true
   },
   "include": ["src/**/*"]

@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "handle the error without tryCatch",
   "main": "dist/index.js",
-  "type": "module",
+  "types": "dist/index.d.ts",
   "scripts": {
     "build": "npx rollup -c",
     "start": "node dist/index.js",
@@ -24,6 +24,7 @@
     "@types/node": "^20.11.26",
     "rollup": "^4.13.0",
     "tslib": "^2.6.2",
-    "typescript": "^5.4.2"
+    "typescript": "^5.4.2",
+    "undici-types": "^6.7.1"
   }
 }
