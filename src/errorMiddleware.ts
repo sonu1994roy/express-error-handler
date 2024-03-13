@@ -1,4 +1,4 @@
-import {ErrorHandler} from "./ErrorHandler";
+import { newError} from "./ErrorHandler";
 import { Request, Response, NextFunction } from "express";
 
  const errorMiddleware = (err: any, req: Request, res: Response, next: NextFunction) => {
@@ -7,27 +7,27 @@ import { Request, Response, NextFunction } from "express";
 
     if (err.name === "CastError") {
         const message = `Resource not found. Invalid: ${(err as any).path}`;
-        err = new ErrorHandler(message, 400);
+        err =  newError(message, 400);
     }
 
     if (err.code === 11000) {
         const message = `Duplicate ${(err as any).keyValue} Entered`;
-        err = new ErrorHandler(message, 400);
+        err =  newError(message, 400);
     }
 
     if (err.name === "MongoError") {
         const message = `Something went wrong! Please try again later`;
-        err = new ErrorHandler(message, 400);
+        err =  newError(message, 400);
     }
 
     if (err.name === "JsonWebTokenError") {
         const message = `Json Web Token is invalid, Try again`;
-        err = new ErrorHandler(message, 400);
+        err =  newError(message, 400);
     }
 
     if (err.name === "TokenExpiredError") {
         const message = `Json Web Token is Expired, Try again`;
-        err = new ErrorHandler(message, 400);
+        err =  newError(message, 400);
     }
 
     res.status(err.statusCode).json({

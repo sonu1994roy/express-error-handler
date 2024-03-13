@@ -7,5 +7,7 @@ class ErrorHandler extends Error {
         Error.captureStackTrace(this, this.constructor);
     }
 }
-
-export { ErrorHandler};
+const newError = (message: string, statusCode: number) => {
+    new ErrorHandler(message, statusCode);
+};
+export { newError};
