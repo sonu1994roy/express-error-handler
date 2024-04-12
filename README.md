@@ -80,6 +80,22 @@ app.post('/user', validateUser, (req, res) => {
     res.send('User created successfully!');
 });
 
+// Second example with catching the error if any fail while creating the data 
+app.post('/partner/about-self', catchAsyncErrors(async (req, res, next) => {
+  const { name, email, phone } = req.body;
+ 
+  if (!name || !email || !phone) {
+    return next(new Error("Please provide name and other details.", 404));
+  }
+    const data = await User.create({ name, email, phone });
+    res.status(201).json({
+      success: true,
+      message: 'Created successfully',
+      data
+    });
+}));
+
+
 // Error middleware
 app.use(errorMiddleware);
 
