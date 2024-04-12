@@ -81,11 +81,11 @@ app.post('/user', validateUser, (req, res) => {
 });
 
 // Second example with catching the error if any fail while creating the data 
-app.post('/partner/about-self', catchAsyncErrors(async (req, res, next) => {
+app.post('/user', catchAsyncErrors(async (req, res, next) => {
   const { name, email, phone } = req.body;
  
   if (!name || !email || !phone) {
-    return next(new Error("Please provide name and other details.", 404));
+    return next(newError("Please provide name and other details.", 404));
   }
     const data = await User.create({ name, email, phone });
     res.status(201).json({
