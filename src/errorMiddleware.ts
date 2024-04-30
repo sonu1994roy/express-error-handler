@@ -29,6 +29,10 @@ import { Request, Response, NextFunction } from "express";
         const message = `Json Web Token is Expired, Try again`;
         err =  newError(message, 400);
     }
+    if (err.customProperty && err.customProperty === "fileUploadError") {
+        err.message = "File upload failed";
+        err.statusCode = 400;
+    }    
 
     res.status(err.statusCode).json({
         success: false,
