@@ -3,8 +3,8 @@ name: Publish to npm
 on:
   push:
     branches:
-      - master
-    # You can also trigger this on new tags
+      - master  # Update this if your default branch is 'master'
+    # Optionally trigger on new tags
     tags:
       - "v*.*.*"
 
@@ -13,40 +13,36 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Step 1: Checkout the repository
       - name: Checkout code
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 0  # Fetch all history for all branches and tags
 
-      # Step 2: Set up Node.js
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 'lts/*'  # or specify a version like '16.x'
+          node-version: 'lts/*'
           registry-url: 'https://registry.npmjs.org/'
 
-      # Step 3: Authenticate with npm using the secret token
       - name: Authenticate with npm
         run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
 
-      # Step 4: Install dependencies and build the package
       - name: Install dependencies
         run: npm ci
 
       - name: Build the package
         run: npm run build
 
-      # Step 5: Publish to npm if the version is updated
       - name: Publish to npm
         run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-      # Optional: Create a tag for the release
       - name: Create GitHub release tag
         if: success()
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           VERSION=$(node -p "require('./package.json').version")
           git tag "v$VERSION"
           git push origin "v$VERSION"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # No need to specify this in secrets
