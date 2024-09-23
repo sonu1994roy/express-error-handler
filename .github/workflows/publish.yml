@@ -44,7 +44,9 @@ jobs:
       # Optional: Create a tag for the release
       - name: Create GitHub release tag
         if: success()
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           VERSION=$(node -p "require('./package.json').version")
           git tag "v$VERSION"
-          git push origin --tags
+          git push origin "v$VERSION"
