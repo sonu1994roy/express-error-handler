@@ -1,32 +1,38 @@
 {
   "name": "expressive-error-handler",
-  "version": "1.0.4",
-  "description": "handle the error without tryCatch  and throw error with statusCode",
+  "version": "1.0.5",
+  "description": "handle the error without tryCatch and throw error with statusCode",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "build": "tsc && npx rollup -c", 
+    "build": "tsc && npx rollup -c",
     "start": "node dist/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
     "npm",
     "package",
-    "typescript",
     "express"
   ],
   "author": "Sonu",
   "license": "MIT",
-  "dependencies": {
-  "tslib": "^2.6.2"
-},
   "devDependencies": {
     "@rollup/plugin-babel": "^6.0.4",
     "@rollup/plugin-typescript": "^11.1.6",
     "@types/express": "^4.17.21",
     "@types/node": "^20.11.26",
     "rollup": "^4.13.0",
+    "tslib": "^2.6.2",
     "typescript": "^5.4.2",
     "undici-types": "^6.7.1"
+  },
+  "dependencies": {
+    "tslib": "^2.6.2"
+  },
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
   }
 }
